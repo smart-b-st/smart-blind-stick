@@ -1,0 +1,671 @@
+/* =========================================
+   SMART BLIND STICK
+   Blue and white responsive theme
+   ========================================= */
+
+:root {
+    --blue: #1769AA;
+    --blue-dark: #104C80;
+    --blue-light: #E8F2FC;
+    --white: #FFFFFF;
+    --background: #F2F6FA;
+    --navy: #172B4D;
+    --text: #26374D;
+    --muted: #66758A;
+    --border: #DCE5EF;
+    --green: #16845B;
+    --orange: #C17B00;
+    --red: #C0392B;
+    --shadow: 0 5px 20px rgba(23, 55, 90, 0.07);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background: var(--background);
+    line-height: 1.5;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid #85BDF0;
+    outline-offset: 3px;
+}
+
+button:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* Header */
+
+.app-header {
+    min-height: 90px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 18px max(5%, calc((100% - 1180px) / 2));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-icon {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    background: var(--blue-light);
+    font-size: 28px;
+}
+
+.brand h1 {
+    margin: 0;
+    color: var(--navy);
+    font-size: 23px;
+}
+
+.brand p {
+    margin: 2px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.demo-badge,
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 30px;
+    padding: 6px 12px;
+    background: #FFF2D8;
+    color: #8C5A00;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Main layout */
+
+.app-container {
+    width: min(1120px, 92%);
+    margin: 35px auto;
+}
+
+.panel {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 24px;
+    margin-bottom: 22px;
+    box-shadow: var(--shadow);
+}
+
+.panel h3 {
+    color: var(--navy);
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.panel p {
+    color: var(--muted);
+}
+
+/* Stick ID screen */
+
+.welcome-panel {
+    max-width: 510px;
+    margin: 55px auto;
+    padding: 38px;
+}
+
+.welcome-icon {
+    width: 74px;
+    height: 74px;
+    margin: 0 auto 20px;
+    display: grid;
+    place-items: center;
+    border-radius: 22px;
+    background: var(--blue-light);
+    font-size: 38px;
+}
+
+.welcome-panel h2,
+.welcome-panel > p {
+    text-align: center;
+}
+
+.welcome-panel h2 {
+    margin: 0 0 8px;
+    color: var(--navy);
+    font-size: 25px;
+}
+
+.welcome-panel > p {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    color: var(--navy);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 13px 14px;
+    color: var(--text);
+    background: var(--white);
+    border: 1px solid #C9D5E3;
+    border-radius: 9px;
+}
+
+input[type="text"]:focus {
+    border-color: var(--blue);
+}
+
+.primary-button,
+.secondary-button {
+    border: none;
+    border-radius: 9px;
+    padding: 12px 18px;
+    font-weight: 650;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.primary-button {
+    color: var(--white);
+    background: var(--blue);
+}
+
+.primary-button:hover {
+    background: var(--blue-dark);
+}
+
+.secondary-button {
+    background: var(--blue-light);
+    color: var(--blue-dark);
+    border: 1px solid #C9DFF4;
+}
+
+.secondary-button:hover {
+    background: #D8EAFB;
+}
+
+.welcome-panel form > .primary-button {
+    width: 100%;
+    margin-top: 12px;
+}
+
+.small-note {
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.message {
+    min-height: 18px;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+/* Welcome row and navigation */
+
+.welcome-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.welcome-row h2,
+.section-heading h2 {
+    color: var(--navy);
+    margin: 0 0 5px;
+    font-size: 25px;
+}
+
+.welcome-row p {
+    color: var(--muted);
+    margin: 0;
+}
+
+.eyebrow {
+    color: var(--blue) !important;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    margin-bottom: 5px !important;
+}
+
+.app-navigation {
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    margin-bottom: 28px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: var(--white);
+}
+
+.nav-button {
+    flex: 1;
+    border: none;
+    border-radius: 9px;
+    padding: 12px 10px;
+    color: var(--muted);
+    background: transparent;
+    font-weight: 650;
+}
+
+.nav-button span {
+    margin-right: 6px;
+    font-size: 18px;
+}
+
+.nav-button:hover {
+    background: var(--blue-light);
+    color: var(--blue-dark);
+}
+
+.nav-button.active {
+    background: var(--blue);
+    color: var(--white);
+}
+
+.app-page {
+    min-width: 0;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Bluetooth panel */
+
+.bluetooth-panel {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+
+.device-icon {
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: var(--blue-light);
+    color: var(--blue);
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.bluetooth-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.bluetooth-info h3 {
+    margin-bottom: 3px;
+}
+
+.bluetooth-info p {
+    margin: 0;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+/* Sensor cards */
+
+.sensor-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+.sensor-card {
+    min-width: 0;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+}
+
+.sensor-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    background: var(--blue-light);
+    border-radius: 13px;
+    font-size: 25px;
+    margin-bottom: 16px;
+}
+
+.sensor-card h3 {
+    color: var(--navy);
+    margin: 0 0 12px;
+    font-size: 17px;
+}
+
+.sensor-value {
+    margin: 0 0 6px;
+    color: var(--orange);
+    font-weight: 750;
+    font-size: 19px;
+    overflow-wrap: anywhere;
+}
+
+.sensor-detail {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.battery-track {
+    height: 8px;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 12px 0;
+    background: #E4EAF1;
+}
+
+.battery-fill {
+    height: 100%;
+    width: 0;
+    background: var(--green);
+    border-radius: inherit;
+}
+
+/* Information rows */
+
+.info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row span {
+    color: var(--muted);
+}
+
+.info-row strong {
+    color: var(--navy);
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+/* Settings */
+
+.settings-description {
+    margin: 0 0 20px;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.range-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.range-heading label {
+    margin: 0;
+}
+
+.range-heading strong {
+    color: var(--blue);
+    font-size: 20px;
+}
+
+input[type="range"] {
+    display: block;
+    width: 100%;
+    accent-color: var(--blue);
+    margin: 22px 0 8px;
+    cursor: pointer;
+}
+
+.range-labels {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 17px 0;
+    margin: 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+}
+
+.toggle-row:last-child {
+    border-bottom: none;
+}
+
+.toggle-row span {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.toggle-row strong {
+    color: var(--navy);
+}
+
+.toggle-row small {
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    accent-color: var(--blue);
+    cursor: pointer;
+}
+
+/* Find My Stick */
+
+.location-panel {
+    text-align: center;
+    padding: 35px 24px;
+}
+
+.location-large-icon {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 18px;
+    display: grid;
+    place-items: center;
+    background: var(--blue-light);
+    border-radius: 24px;
+    font-size: 35px;
+}
+
+.location-panel h3 {
+    font-size: 21px;
+}
+
+.location-panel .primary-button {
+    margin-top: 18px;
+}
+
+/* Footer */
+
+.app-footer {
+    padding: 20px 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.app-footer p {
+    margin: 5px 0;
+}
+
+/* Responsive layout */
+
+@media (min-width: 900px) {
+    .sensor-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .sensor-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .app-header {
+        padding: 15px 4%;
+        align-items: flex-start;
+    }
+
+    .brand {
+        gap: 10px;
+    }
+
+    .brand-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 24px;
+    }
+
+    .brand h1 {
+        font-size: 18px;
+    }
+
+    .brand p {
+        font-size: 11px;
+    }
+
+    .demo-badge {
+        font-size: 10px;
+        padding: 5px 8px;
+    }
+
+    .app-container {
+        width: 92%;
+        margin: 22px auto;
+    }
+
+    .welcome-panel {
+        padding: 25px 20px;
+        margin: 25px auto;
+    }
+
+    .welcome-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .app-navigation {
+        gap: 4px;
+        padding: 5px;
+    }
+
+    .nav-button {
+        padding: 10px 4px;
+        font-size: 12px;
+    }
+
+    .nav-button span {
+        display: block;
+        margin: 0 0 3px;
+    }
+
+    .section-heading h2 {
+        font-size: 21px;
+    }
+
+    .section-heading p {
+        font-size: 12px;
+    }
+
+    .panel {
+        padding: 19px;
+    }
+
+    .bluetooth-panel {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .bluetooth-info {
+        flex-basis: calc(100% - 75px);
+    }
+
+    .bluetooth-panel > .primary-button {
+        width: 100%;
+    }
+
+    .sensor-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .sensor-card {
+        padding: 20px;
+    }
+
+    .info-row {
+        align-items: flex-start;
+        font-size: 13px;
+    }
+}
