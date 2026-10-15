@@ -1,0 +1,274 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1769AA">
+    <title>Smart Blind Stick</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="brand">
+            <div class="brand-icon">🦯</div>
+            <div>
+                <h1>Smart Blind Stick</h1>
+                <p>Safety • Independence • Mobility</p>
+            </div>
+        </div>
+        <span class="demo-badge">DEMO MODE</span>
+    </header>
+
+    <main class="app-container">
+
+        <!-- STICK ID ENTRY -->
+        <section id="codeScreen" class="panel welcome-panel">
+            <div class="welcome-icon">🦯</div>
+            <h2>Connect Your Blind Stick</h2>
+            <p>Enter the ID of your compatible smart blind stick.</p>
+
+            <form id="stickForm">
+                <label for="stickId">Stick ID</label>
+                <input
+                    type="text"
+                    id="stickId"
+                    name="stickId"
+                    placeholder="Example: STICK001"
+                    autocomplete="off"
+                    required
+                >
+                <p id="formMessage" class="message" role="status"></p>
+                <button type="submit" class="primary-button">
+                    Continue to Dashboard
+                </button>
+            </form>
+
+            <p class="small-note">
+                Demo mode: entering an ID does not pair a real Bluetooth device.
+            </p>
+        </section>
+
+        <!-- MAIN APP -->
+        <section id="dashboard" hidden>
+
+            <div class="welcome-row">
+                <div>
+                    <p class="eyebrow">YOUR DEVICE</p>
+                    <h2>Welcome back!</h2>
+                    <p>Stick ID: <strong id="displayStickId">STICK001</strong></p>
+                </div>
+                <button id="changeStickButton" class="secondary-button" type="button">
+                    Change Stick
+                </button>
+            </div>
+
+            <!-- NAVIGATION -->
+            <nav class="app-navigation" aria-label="Main navigation">
+                <button class="nav-button active" data-page="homePage" type="button">
+                    <span>⌂</span> Dashboard
+                </button>
+                <button class="nav-button" data-page="settingsPage" type="button">
+                    <span>⚙</span> Settings
+                </button>
+                <button class="nav-button" data-page="findPage" type="button">
+                    <span>⌖</span> Find My Stick
+                </button>
+            </nav>
+
+            <!-- DASHBOARD PAGE -->
+            <section id="homePage" class="app-page">
+                <div class="section-heading">
+                    <div>
+                        <h2>Stick Dashboard</h2>
+                        <p>Live information when supported hardware is connected.</p>
+                    </div>
+                    <span class="status-pill">Demo</span>
+                </div>
+
+                <!-- BLUETOOTH -->
+                <article class="panel bluetooth-panel">
+                    <div class="device-icon">ᛒ</div>
+                    <div class="bluetooth-info">
+                        <h3>Bluetooth Connection</h3>
+                        <p id="bluetoothStatus" role="status">Not connected</p>
+                    </div>
+                    <button id="bluetoothButton" class="primary-button" type="button">
+                        Connect (Demo)
+                    </button>
+                </article>
+
+                <!-- SENSOR CARDS -->
+                <div class="sensor-grid">
+
+                    <article class="sensor-card">
+                        <div class="sensor-icon">🚧</div>
+                        <h3>Obstacle Detection</h3>
+                        <p id="obstacleStatus" class="sensor-value">Unavailable</p>
+                        <p class="sensor-detail">
+                            Distance: <span id="obstacleDistance">--</span>
+                        </p>
+                    </article>
+
+                    <article class="sensor-card">
+                        <div class="sensor-icon">💧</div>
+                        <h3>Water Detection</h3>
+                        <p id="waterStatus" class="sensor-value">Unavailable</p>
+                        <p class="sensor-detail">Waiting for sensor data</p>
+                    </article>
+
+                    <article class="sensor-card">
+                        <div class="sensor-icon">🔋</div>
+                        <h3>Stick Battery</h3>
+                        <p id="batteryStatus" class="sensor-value">--%</p>
+                        <div class="battery-track">
+                            <div id="batteryBar" class="battery-fill"></div>
+                        </div>
+                        <p class="sensor-detail">Battery data unavailable</p>
+                    </article>
+
+                    <article class="sensor-card">
+                        <div class="sensor-icon">📍</div>
+                        <h3>Stick Location</h3>
+                        <p id="locationStatus" class="sensor-value">Unavailable</p>
+                        <p id="locationCoordinates" class="sensor-detail">
+                            No GPS coordinates
+                        </p>
+                    </article>
+
+                </div>
+
+                <article class="panel">
+                    <h3>Device Information</h3>
+                    <div class="info-row">
+                        <span>Selected stick</span>
+                        <strong id="deviceInfoId">STICK001</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>Connection</span>
+                        <strong id="deviceInfoConnection">Not connected</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>Sensor data</span>
+                        <strong>Not received</strong>
+                    </div>
+                </article>
+            </section>
+
+            <!-- SETTINGS PAGE -->
+            <section id="settingsPage" class="app-page" hidden>
+                <div class="section-heading">
+                    <div>
+                        <h2>Settings</h2>
+                        <p>Customize supported stick vibration behavior.</p>
+                    </div>
+                    <span class="status-pill">Settings</span>
+                </div>
+
+                <article class="panel">
+                    <h3>Vibration Intensity</h3>
+                    <p class="settings-description">
+                        Choose the vibration strength. The stick must support
+                        remote intensity control for this setting to affect hardware.
+                    </p>
+
+                    <div class="range-heading">
+                        <label for="intensity">Intensity</label>
+                        <strong id="intensityValue">60%</strong>
+                    </div>
+                    <input
+                        type="range"
+                        id="intensity"
+                        name="intensity"
+                        min="0"
+                        max="100"
+                        value="60"
+                    >
+                    <div class="range-labels">
+                        <span>Low</span>
+                        <span>High</span>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <h3>Vibration Patterns</h3>
+                    <p class="settings-description">
+                        Enable different alert patterns if your stick firmware
+                        supports separate patterns.
+                    </p>
+
+                    <label class="toggle-row" for="obstaclePattern">
+                        <span>
+                            <strong>Obstacle Alert</strong>
+                            <small>Pattern for nearby obstacles</small>
+                        </span>
+                        <input type="checkbox" id="obstaclePattern" checked>
+                    </label>
+
+                    <label class="toggle-row" for="waterPattern">
+                        <span>
+                            <strong>Water Alert</strong>
+                            <small>Different pattern for water detection</small>
+                        </span>
+                        <input type="checkbox" id="waterPattern" checked>
+                    </label>
+                </article>
+
+                <article class="panel">
+                    <h3>Device Preferences</h3>
+                    <p class="settings-description">
+                        These preferences are sent to the demo backend. They are
+                        not yet written to real stick hardware.
+                    </p>
+
+                    <button id="saveSettingsButton" class="primary-button" type="button">
+                        Save Settings
+                    </button>
+                    <p id="settingsMessage" class="message" role="status"></p>
+                </article>
+            </section>
+
+            <!-- FIND MY STICK PAGE -->
+            <section id="findPage" class="app-page" hidden>
+                <div class="section-heading">
+                    <div>
+                        <h2>Find My Stick</h2>
+                        <p>Check the last location reported by your stick.</p>
+                    </div>
+                </div>
+
+                <article class="panel location-panel">
+                    <div class="location-large-icon">📍</div>
+                    <h3>Stick Location</h3>
+                    <p id="findLocationStatus">No stick GPS data available.</p>
+                    <p id="findLocationCoordinates" class="sensor-detail">
+                        Latitude: --, Longitude: --
+                    </p>
+
+                    <button id="refreshLocationButton" class="primary-button" type="button">
+                        Refresh Location
+                    </button>
+
+                    <p id="locationMessage" class="message" role="status"></p>
+                </article>
+
+                <article class="panel">
+                    <h3>How location tracking works</h3>
+                    <p class="settings-description">
+                        Remote tracking requires GPS on the stick and a suitable
+                        network connection to send its location. Bluetooth alone
+                        usually only works within nearby range.
+                    </p>
+                </article>
+            </section>
+
+            <footer class="app-footer">
+                <p>Smart Blind Stick • Prototype</p>
+                <p>Always follow the guidance of your physical mobility aid.</p>
+            </footer>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
